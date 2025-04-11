@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+    container_name: yt-api
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      JWT_SECRET: "f8be894170864e55c4c61032a71bc462045ead9be377679b54698c181f0b0ff9"
+      GOOGLE_CLOUD_API_KEY: "YOUR_GOOGLE_CLOUD_API_KEY"
+      PRODUCTION: "true"
+      DEFAULT_ADMIN_USERNAME: "admin"
+      DEFAULT_ADMIN_PASSWORD: "admin"
+      STORAGE_PATH: "/app/storage"
+      PYCONVERTER_PATH: "/app/pkg/pyConverter/main.py"
+    volumes:
+      - ./api/storage:/app/storage
+    networks:
+      - mediaflow-net
+
+  client:
+    build:
+      context: ./client
+    container_name: yt-client
+    ports:
+      - "5173:80"
+    environment:
+      VITE_API_URL: http://yt-api:3000
+    depends_on:
+      - api
+    networks:
+      - mediaflow-net
+
+networks:
+  mediaflow-net:
+    driver: bridge
