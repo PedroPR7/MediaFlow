@@ -26,7 +26,7 @@ services:
       context: ./client
     container_name: yt-client
     ports:
-      - "5173:80"
+      - "5173:80" # el puerto de desarrollo en local, 80 dentro del contenedor
     environment:
       VITE_API_URL: http://yt-api:3000
     depends_on:

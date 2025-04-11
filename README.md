@@ -1,6 +1,12 @@
-# MediaFlow
+<div align="center">
+  <img src="https://raw.githubusercontent.com/pointedsec/yt-converter-client/refs/heads/main/public/favicon.png" alt="MediaFlow Logo" width="100" />
+  <h1>MediaFlow</h1>
+  <p>A modern YouTube media converter with support for MP3 and MP4 formats</p>
+</div>
 
+---
 MediaFlow is a media management system with separate API and client components.
+---
 
 ## Prerequisites
 
@@ -28,7 +34,12 @@ cd MediaFlow
       GOOGLE_CLOUD_API_KEY: "YOUR_GOOGLE_CLOUD_API_KEY"
 ```
 
-4. Start the application using Docker Compose:
+4. Modify the `./client/.env` file with your local/public IP Address (remember, the API have to be reachable from the public to expose this to the internet, so do your port forwarding okay!)
+```
+VITE_API_URL = "http://192.168.1.111:3000/api/"
+```
+
+5. Start the application using Docker Compose:
 ```bash
 docker compose up --build -d
 ```
