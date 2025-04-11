@@ -1,0 +1,6 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/pointedsec/yt-converter-client.git
+[submodule "api"]
+	path = api
+	url = https://github.com/pointedsec/yt-converter-api.git
